@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engineering Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #0f172a;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+    }
+
+    .logo h1 {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .logo p {
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #475569;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #0f172a;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(2,6,23,0.85), rgba(2,6,23,0.9)), url('images/3d-view-1.png');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 7rem 1.5rem;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-text .tag {
+      text-transform: uppercase;
+      letter-spacing: 0.25rem;
+      color: #94a3b8;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero h2 {
+      font-size: 4rem;
+      line-height: 1.1;
+      font-weight: 800;
+    }
+
+    .hero p {
+      margin-top: 2rem;
+      color: #cbd5e1;
+      font-size: 1.1rem;
+      max-width: 550px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.9rem 1.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #0f172a;
+    }
+
+    .btn-primary:hover {
+      background: #e2e8f0;
+    }
+
+    .btn-secondary {
+      border: 1px solid #334155;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .featured-card {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+
+    .featured-card img {
+      width: 100%;
+      display: block;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .featured-content {
+      padding: 2rem;
+    }
+
+    .featured-content span {
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
+      color: #94a3b8;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .featured-content h3 {
+      margin-top: 1rem;
+      font-size: 2rem;
+    }
+
+    .featured-content p {
+      margin-top: 1rem;
+      color: #cbd5e1;
+    }
+
+    section {
+      padding: 6rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-tag {
+      text-transform: uppercase;
+      letter-spacing: 0.25rem;
+      color: #64748b;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: 3rem;
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: 2rem;
+    }
+
+    .about-grid,
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 2rem;
+    }
+
+    .card h3 {
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+    }
+
+    .card ul {
+      padding-left: 1rem;
+      color: #475569;
+    }
+
+    .projects {
+      background: #f8fafc;
+    }
+
+    .project-case {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      margin-top: 4rem;
+      box-shadow: 0 15px 40px rgba(15,23,42,0.08);
+    }
+
+    .project-header {
+      background: #0f172a;
+      color: white;
+      padding: 3rem;
+    }
+
+    .project-header span {
+      text-transform: uppercase;
+      letter-spacing: 0.25rem;
+      color: #94a3b8;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .project-header h3 {
+      margin-top: 1rem;
+      font-size: 2.5rem;
+    }
+
+    .project-header p {
+      margin-top: 1rem;
+      max-width: 850px;
+      color: #cbd5e1;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      padding: 1.5rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid #e2e8f0;
+      transition: 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.02);
+    }
+
+    .contact {
+      background: #020617;
+      color: white;
+      text-align: center;
+    }
+
+    .contact p {
+      color: #cbd5e1;
+      max-width: 700px;
+      margin: 1rem auto 2rem;
+    }
+
+    footer {
+      padding: 2rem;
+      text-align: center;
+      color: #64748b;
+      border-top: 1px solid #1e293b;
+      background: #020617;
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2.8rem;
+      }
+
+      .section-title {
+        font-size: 2.2rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .project-header h3 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <h1>Engineering Portfolio</h1>
+        <p>Fawzi Seidu</p>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-text">
+        <div class="tag">Rutgers University</div>
+
+        <h2>Structural Engineering Portfolio</h2>
+
+        <p>
+          Civil Engineering student with interests in structural engineering,
+          ETABS modeling, steel systems, wind analysis, and engineering design.
+        </p>
+
+        <div class="buttons">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+
+          <a href="https://www.linkedin.com/in/fawzi-seidu" target="_blank" class="btn btn-secondary">
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="featured-card">
+        <img src="images/wind-analysis.png" alt="Wind analysis model">
+
+        <div class="featured-content">
+          <span>Featured Project</span>
+
+          <h3>20-Story Steel Office Building</h3>
+
+          <p>
+            Structural engineering case study involving ETABS modeling,
+            steel framing systems, LRFD load analysis, braced frames,
+            and deformation evaluation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-tag">About</div>
+
+      <h2 class="section-title">Academic and Engineering Background</h2>
+
+      <p style="max-width:800px;color:#475569;font-size:1.1rem;">
+        Civil Engineering student at Rutgers University with interests in
+        structural analysis, steel systems, engineering modeling, and
+        structural design workflows. Experience includes ETABS modeling,
+        wind analysis, concrete testing, and engineering project collaboration.
+      </p>
+
+      <div class="about-grid">
+        <div class="card">
+          <h3>Education</h3>
+          <p>Rutgers University</p>
+          <p>B.S. Civil Engineering</p>
+          <br>
+          <p>Middlesex College</p>
+          <p>Engineering Science</p>
+        </div>
+
+        <div class="card">
+          <h3>Technical Skills</h3>
+          <ul>
+            <li>ETABS</li>
+            <li>Structural Analysis</li>
+            <li>Steel Design</li>
+            <li>Wind Analysis</li>
+            <li>MATLAB</li>
+            <li>Excel</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Engineering Interests</h3>
+          <ul>
+            <li>Structural Engineering</li>
+            <li>Steel Structures</li>
+            <li>Engineering Modeling</li>
+            <li>Structural Systems</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects">
+    <div class="container">
+      <div class="section-tag">Projects</div>
+
+      <h2 class="section-title">Engineering Project Experience</h2>
+
+      <div class="project-case">
+        <div class="project-header">
+          <span>Structural Engineering Case Study</span>
+          <h3>20-Story Steel Office Building</h3>
+          <p>
+            Developed and analyzed a 20-story steel office building using ETABS for structural modeling,
+            framing analysis, braced systems, wind loading evaluation, and deformation analysis.
+          </p>
+        </div>
+
+        <div class="gallery">
+          <img src="images/full-floor-plan.png" alt="Full floor plan">
+          <img src="images/reduced-floor-plan.png" alt="Reduced floor plan">
+          <img src="images/elevation-system.png" alt="Elevation system">
+          <img src="images/bracing-elevation.png" alt="Bracing elevation">
+          <img src="images/3d-view-1.png" alt="3D structural model">
+          <img src="images/3d-view-2.png" alt="3D structural model 2">
+          <img src="images/wind-analysis.png" alt="Wind analysis">
+          <img src="images/deformed-shape.png" alt="Deformed shape analysis">
+        </div>
+      </div>
+
+      <div class="project-case">
+        <div class="project-header">
+          <span>Experimental Engineering Project</span>
+          <h3>Concrete Cylinder Testing</h3>
+          <p>
+            Laboratory engineering project involving specimen fabrication,
+            compression testing, stress-strain analysis, elastic modulus comparison,
+            and failure behavior evaluation.
+          </p>
+        </div>
+
+        <div class="gallery">
+          <img src="images/concrete-curing.png" alt="Concrete curing">
+          <img src="images/demolding-process.png" alt="Demolding process">
+          <img src="images/stress-strain-curve.png" alt="Stress strain curve">
+          <img src="images/failure-analysis.png" alt="Failure analysis">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="leadership">
+    <div class="container">
+      <div class="section-tag">Leadership & Certifications</div>
+
+      <h2 class="section-title">Organizations and Professional Development</h2>
+
+      <div class="leadership-grid">
+        <div class="card">
+          <h3>Organizations & Activities</h3>
+
+          <ul>
+            <li>ASCE Student Member</li>
+            <li>Steel Bridge Club</li>
+            <li>America Needs You Fellow</li>
+            <li>Engineering Design Club</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Certifications & Recognition</h3>
+
+          <ul>
+            <li>OSHA 10-Hour Construction Safety</li>
+            <li>Dean's List Recognition</li>
+            <li>Bridge Competition Winner</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-tag">Contact</div>
+
+      <h2 class="section-title">Professional Contact</h2>
+
+      <p>
+        Feel free to connect regarding engineering opportunities,
+        structural engineering projects, or professional networking.
+      </p>
+
+      <div class="buttons" style="justify-content:center;">
+        <a href="https://www.linkedin.com/in/fawzi-seidu" target="_blank" class="btn btn-primary">
+          Connect on LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Engineering Portfolio — Fawzi Seidu
+  </footer>
+
+</body>
+</html>
